@@ -4,10 +4,17 @@
 <input type="text" ref="name">
 <button @click="toggleModal">Click Me</button>
 <div v-if="showModal">
-  <Modal :header="header" :content="content" @close="toggleModal"/>
+  <Modal @close="toggleModal">
+    <template v-slot:links>
+      <a href="#">Sign Up Now</a>
+      <a href="#">More Info</a>
+    </template>
+    <h1>ART . B TECHNOLOGIESD</h1>
+    <P>Get it done from Us at cool discount</P>
+  </Modal>
 </div>
 </template>
-
+    
 <script>
 import Modal from './components/Modal.vue'
 
