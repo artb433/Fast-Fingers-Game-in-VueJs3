@@ -18,16 +18,25 @@
     <p>{{text}}</p>
   </Modal>
 </div>
+<div>
+  <button @click="start" :disabled="isPlaying">Play</button>
+</div>
+
+<Block v-if="isPlaying" :delay="delay"/>
+
+
 </template>
     
 <script>
 import Modal from './components/Modal.vue'
+import Block from './components/Block.vue'
 
 
 export default {
   name: 'App',
   components: {
     Modal,
+    Block
   },
   data() {
     return {
@@ -36,6 +45,8 @@ export default {
       text: 'You are one step away from being part of this great journey',
       showModal: false,
       showModal2: false,
+      isPlaying: false,
+      delay:null
     }
   },
   methods: {
@@ -45,6 +56,15 @@ export default {
 
     toggleModal2(){
       this.showModal2 = !this.showModal2
+    },
+
+    start() {
+      this.isPlaying = true
+      this.delay= 2000 + Math.random() * 5000
+      // this.delay = setTimeout(() => {
+      //   this.isPlaying = false
+      // }, 2000 + Math.random() * 5000),
+      console.log(this.delay)
     }
   },
 }
@@ -56,7 +76,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #444;
   margin-top: 60px;
 } 
 
@@ -69,5 +89,6 @@ color: black;
 
 button{
   margin-left: 10px;
+  margin-bottom: 10px;
 }
 </style>
