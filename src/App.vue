@@ -1,16 +1,21 @@
 <template>
 <div><h1>{{title}}</h1></div>
-
-<input type="text" ref="name">
 <button @click="toggleModal">Click Me</button>
+<button @click="toggleModal2">Sign In</button>
 <div v-if="showModal">
-  <Modal @close="toggleModal">
+  <Modal theme="sale" @close="toggleModal">
     <template v-slot:links>
       <a href="#">Sign Up Now</a>
       <a href="#">More Info</a>
     </template>
-    <h1>ART . B TECHNOLOGIESD</h1>
-    <P>Get it done from Us at cool discount</P>
+    <h1>{{header}}</h1>
+    <p>{{text}}</p>
+  </Modal>
+</div>
+<div v-if="showModal2">
+  <Modal  @close="toggleModal2">
+    <h1>{{header}}</h1>
+    <p>{{text}}</p>
   </Modal>
 </div>
 </template>
@@ -26,15 +31,20 @@ export default {
   },
   data() {
     return {
-      title: 'ART.B  TECHNOLOGIES',
+      title: 'Welcome to the Inc',
       header: 'Sign Up To Continue',
-      content: 'You are one step away from being part of this great journey',
+      text: 'You are one step away from being part of this great journey',
       showModal: false,
+      showModal2: false,
     }
   },
   methods: {
     toggleModal() {
     this.showModal = !this.showModal
+    },
+
+    toggleModal2(){
+      this.showModal2 = !this.showModal2
     }
   },
 }
@@ -55,5 +65,9 @@ border-bottom: 1px solid #ddd;
 display: inline-block;
 padding-bottom: 10px;
 color: black;
+}
+
+button{
+  margin-left: 10px;
 }
 </style>
