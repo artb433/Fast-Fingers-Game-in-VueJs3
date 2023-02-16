@@ -22,21 +22,21 @@
   <button @click="start" :disabled="isPlaying">Play</button>
 </div>
 
-<!-- <Block v-if="isPlaying" :delay="delay"/> -->
+<Block v-if="isPlaying" :delay="delay"/>
 
 
 </template>
     
 <script>
 import Modal from './components/Modal.vue'
-//import Block from './components/Block.vue'
+import Block from './components/Block.vue'
 
 
 export default {
   name: 'App',
   components: {
     Modal,
-   // Block
+    Block
   },
   data() {
     return {
