@@ -1,5 +1,5 @@
 <template>
-  <div class="block">
+  <div class="block" v-if="showBlock">
     click me
   </div>
 </template>
@@ -8,12 +8,29 @@
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Block",
-  created() {},
-  data() {
-    return {};
-  },
   props: ['delay'],
-  methods: {},
+  data() {
+    return {
+      showBlock: false,
+    } 
+  },
+  mounted() {
+    console.log("component mounted")
+    setTimeout(() => {
+      this.showBlock = true
+      console.log(this.delay)
+    }, this.delay)
+  },
+  updated() {
+    console.log("component updated");
+    // console.log(this.delay);
+    // setTimeout(() => {
+    //   this.showBlock = true;
+    // }, this.delay);
+  },
+  unmounted() {
+    console.log("component unmounted");
+  },
 };
 </script>
 
